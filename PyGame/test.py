@@ -15,7 +15,7 @@ gameDisplay = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption('Boaty Mc BoatFace')
 clock=pygame.time.Clock()
 
-boatIMG=pygame.image.load('boat.png')
+boatIMG=pygame.image.load('boaty.png')
 boat_width=130
 boat_height=173
 def boat(x,y):
@@ -44,6 +44,23 @@ def message_display(text):
 
 def crash():
     message_display('Oops! You Crashed!')
+
+def game_intro():
+
+    intro = True
+
+    while intro:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+        gameDisplay.fill(green)
+        largeText=pygame.font.Font('freesansbold.ttf', 60)
+        textsurf, textrect = text_objects('Boaty Mc BoatFace',largeText)
+        textrect.center = ((display_width*0.5),(display_height*0.5))
+        gameDisplay.blit(textsurf,textrect)
+        pygame.display.update()
+        clock.tick(15)
 
 def game_loop():
 
